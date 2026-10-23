@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090c">
+  <title>StockPilot AI | Premium Inventory Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#top"><div class="brand-mark">⬡</div><div><b>StockPilot <span>AI</span></b><small>INVENTORY INTELLIGENCE</small></div></a>
+    <div class="workspace"><span class="workspace-dot"></span><div><b>Demo warehouse</b><small>Operations workspace</small></div><span class="chevron">⌄</span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav-item active" href="#top"><span>⌂</span> Overview</a>
+    <a class="nav-item" href="#inventory"><span>▤</span> Inventory</a>
+    <a class="nav-item" href="#forecast"><span>⌁</span> Demand forecast <span class="nav-pill">AI</span></a>
+    <a class="nav-item" href="#alerts"><span>♧</span> Stock alerts</a>
+    <div class="sidebar-bottom"><div class="status-line"><span class="pulse"></span> AI forecast engine online</div><div class="profile"><div class="avatar">WH</div><div><b>Warehouse Admin</b><small>Demo workspace</small></div><span class="more">•••</span></div></div>
+  </aside>
+  <main class="main" id="top">
+    <header class="topbar"><div class="crumb">Workspace <span>/</span> <b>Overview</b></div><div class="top-actions"><span class="live"><i></i> SYSTEM OPERATIONAL</span><button class="icon-btn" title="Notifications">♧<em></em></button><div class="avatar small">WH</div><div class="admin-label">Administrator</div></div></header>
+    <section class="hero">
+      <div class="hero-content"><div class="eyebrow"><span class="spark">✦</span> INTELLIGENCE FOR MODERN OPERATIONS</div><h1>Smarter stock.<br><span>Stronger business.</span></h1><p>Predict demand. Prevent stockouts. Keep every part of your operation moving with AI-powered inventory intelligence.</p><div class="hero-actions"><a class="btn btn-primary" href="#forecast">Explore AI forecast <span>↗</span></a><a class="btn btn-outline" href="#inventory">View inventory</a></div><div class="hero-note"><span class="pulse"></span> REAL-TIME INVENTORY INSIGHTS <i></i> BUILT FOR SCALE</div></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-glow"></div><div class="warehouse-lines"></div><div class="hero-stamp"><span>STOCKPILOT</span><b>INTELLIGENCE<br>IN MOTION.</b><small>WAREHOUSE SYSTEMS · AI</small></div><div class="hero-stat"><span class="stat-orb">↗</span><div><small>DEMAND FORECASTING</small><b>Next 7 days</b><span>Powered by machine learning</span></div></div></div>
+    </section>
+    <section class="section-head"><div><div class="eyebrow">PERFORMANCE AT A GLANCE</div><h2>Warehouse overview</h2></div><div class="heading-actions"><button class="btn btn-quiet" id="exportBtn">↓ &nbsp; Export CSV</button><button class="btn btn-primary" id="refreshBtn">↻ &nbsp; Refresh insights</button></div></section>
+    <section class="metric-grid">
+      <article class="metric-card"><div class="metric-top"><span>Total products</span><span class="metric-icon">⬡</span></div><div class="metric-value" id="skuCount">—</div><div class="metric-foot"><span class="trend">PRODUCT CATALOG</span><span>Tracked SKUs</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>Inventory value</span><span class="metric-icon">₹</span></div><div class="metric-value" id="inventoryValue">—</div><div class="metric-foot"><span class="trend positive">● VALUATION</span><span>Current stock value</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>Low stock alerts</span><span class="metric-icon warning-icon">!</span></div><div class="metric-value" id="lowStockCount">—</div><div class="metric-foot"><span class="trend warning">ATTENTION REQUIRED</span><span>At reorder threshold</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>Predicted demand</span><span class="metric-icon">⌁</span></div><div class="metric-value" id="forecastTotal">—</div><div class="metric-foot"><span class="trend positive">✦ AI FORECAST</span><span>Next 7 days</span></div></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel forecast-panel" id="forecast"><div class="panel-heading"><div><div class="eyebrow">PREDICTIVE ANALYTICS</div><h2>Demand forecast</h2><p>AI-powered unit demand prediction</p></div><div class="select-wrap"><select id="productSelect" aria-label="Choose product"></select><span>⌄</span></div></div><div class="chart-summary"><div><small>PROJECTED · NEXT 7 DAYS</small><strong id="forecastProductTotal">— <span>units</span></strong></div><div class="confidence"><span class="confidence-dot"></span> Random Forest model <b>●</b></div></div><div class="chart-area"><div class="y-labels"><span>High</span><span>Medium</span><span>Low</span><span>0</span></div><div class="chart" id="chart"><div class="chart-placeholder">Loading forecast…</div></div></div><div class="chart-legend"><span><i class="legend-blue"></i> Predicted demand</span><span class="chart-note">7-day outlook · Units</span></div></article>
+      <article class="panel alerts-panel" id="alerts"><div class="panel-heading"><div><div class="eyebrow">ACTION CENTER</div><h2>Stock alerts</h2><p>Replenishment needs, prioritized</p></div><span class="count-badge" id="alertBadge">0</span></div><div id="alertList" class="alert-list"><div class="empty">Loading alerts…</div></div><button class="text-button" id="viewInventory">Review all inventory <span>↗</span></button></article>
+    </section>
+    <section class="panel inventory-panel" id="inventory"><div class="panel-heading inventory-heading"><div><div class="eyebrow">PRODUCT CONTROL</div><h2>Inventory overview</h2><p>Stock health and AI-assisted replenishment suggestions</p></div><div class="table-actions"><label class="search-box">⌕ <input id="searchInput" placeholder="Search product or SKU…" aria-label="Search inventory"></label><select id="stockFilter" aria-label="Filter stock"><option value="all">All stock levels</option><option value="low">Low stock only</option><option value="healthy">Healthy stock</option></select></div></div><div class="table-scroll"><table><thead><tr><th>PRODUCT / SKU</th><th>ON-HAND STOCK</th><th>7D FORECAST</th><th>STOCK COVER</th><th>REORDER SUGGESTION</th><th>STATUS</th><th></th></tr></thead><tbody id="inventoryBody"><tr><td colspan="7" class="empty">Loading inventory…</td></tr></tbody></table></div><div class="table-footer"><span id="tableCount">Showing inventory</span><span>Forecasts are estimates, not guarantees.</span></div></section>
+    <footer><span>⬡ StockPilot <b>AI</b> <i></i> WAREHOUSE INVENTORY INTELLIGENCE</span><span>Designed for smarter supply chains <b>✦</b></span></footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>

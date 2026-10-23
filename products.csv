@@ -1,0 +1,9 @@
+sku,product_name,unit_price,current_stock,lead_time_days,reorder_point
+SKU1001,Wireless Mouse,249,125,18,7
+SKU1002,USB-C Cable,199,80,25,5
+SKU1003,Bluetooth Speaker,1299,42,6,10
+SKU1004,Laptop Stand,799,30,5,8
+SKU1005,Mechanical Keyboard,2499,24,4,12
+SKU1006,Webcam HD,1899,19,4,10
+SKU1007,Power Bank,999,55,8,7
+SKU1008,Headphones,1499,38,7,9
