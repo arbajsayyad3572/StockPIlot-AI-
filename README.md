@@ -1,3 +1,9 @@
+# StockPilot-AI
+
+🚀 **Live Demo:** https://stockpilot-ai-05e9.onrender.com
+
+AI-Powered Stock Market Prediction & Risk Analysis
+
 # StockPilot AI — Warehouse Inventory Prediction
 
 A premium-looking, responsive warehouse inventory dashboard for a hackathon demo. It uses a free local stack: Flask (backend), SQLite (database), pandas, and a scikit-learn Random Forest regression model.
