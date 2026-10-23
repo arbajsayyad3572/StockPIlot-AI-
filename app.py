@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT, "instance", "warehouse.db")
 DATA_DIR = os.path.join(ROOT, "data")
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.', static_folder='.')
 
 def connect():
     con = sqlite3.connect(DB_PATH)
