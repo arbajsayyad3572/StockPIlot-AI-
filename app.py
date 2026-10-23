@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT, "instance", "warehouse.db")
-DATA_DIR = os.path.join(ROOT, "data")
+DATA_DIR = ROOT
 app = Flask(__name__, template_folder='.', static_folder='.', static_url_path='')
 
 def connect():
@@ -130,5 +130,8 @@ def update_stock():
     return jsonify({"ok":True,"message":"Stock updated"})
 
 if __name__ == "__main__":
+    init_db()
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
+else:
+    init_db()
